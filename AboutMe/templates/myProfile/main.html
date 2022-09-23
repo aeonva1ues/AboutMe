@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Профиль: Евгений Дмитриевич Перов</title>
+{% endblock %}
+{% block content %}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<div class="bg-info">
+    <div class="container">
+        <h1>Перов Евгений Дмитриевич</h1>
+        <div class="row">
+            <div class="col-3">
+                <div style="width: 16rem">
+                    <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#fullPhotoModal">
+                    <img src="{{ my_photo }}" class="img-thumbnail" alt="Фото не загрузилось...">
+                    </a>
+                </div>
+            </div>
+            <div class=col-9>
+                <p style="padding-top: 30px">
+                    Город: Оренбург<br>
+                    Место обучения: МОАУ «Лицей №2»<br>
+                    Класс: 11 "Т" (Технический)<br>
+                    Дата рождения: 25.12.2005<br>
+                    <a style="cursor: pointer; text-decoration: underline; color: rgb(51, 51, 229)" data-bs-toggle="modal" data-bs-target="#awardsModal">Достижения</a><br>
+                    <a style="color: rgb(51, 51, 229)" target="_blank" href="https://github.com/aeonva1ues">Github</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="fullPhotoModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <div class="modal-body">
+                <img src="{{ my_photo }}" class="img-thumbnail" alt="Фото не загрузилось...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="awardsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <div class="modal-body">
+                <div id="myAwardsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in awards_list %}
+                        {% if image == awards_list.0 %}
+                        <div class="carousel-item active">
+                            <img src="{{ image }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% else %}
+                        <div class="carousel-item">
+                            <img src="{{ image }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myAwardsCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myAwardsCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+</div>
+<div class="container">
+    <h1 class="display-1 text-center" style="padding-bottom: 60px">Обо мне</h1>
+    <p>
+        Приветствую! Меня зовут Евгений, мне 16 лет. На данной странице я разместил основную информацию о себе.
+        <br><br>
+        <h4>Увлечения</h4>
+
+        Пожалуй, главными своими увлечениями я могу назвать программирование, спорт и компьютерные игры. Пользоваться компьютером я начал еще будучи ребенком, поэтому
+        неудивительно, что в мои интересы входят игры. Последнее время я не так часто играю, однако чаще всего я захожу в Dota 2. Также с детства меня интересовал футбол, однако
+        в своем городе у меня не получилось попасть в футбольную школу (на момент, когда я всё же решился, набор был только через просмотр, пройти который мне не удалось). Футбол из-за этого я не бросил, так, практически с первого класса
+        я очень часто хожу на футбольное поле и тренируюсь или играю. Несколько лет назад я играл в любительской команде 2005 года, сыграл 6 матчей в качестве защитника и помог ребятам набрать решающие очки для победы в сезоне.<br>
+        Напоследок я оставил программирование, потому что это моя главная страсть. Мужская часть моей семьи тесно связана с IT, отчего интерес у меня появился с детства. 
+        В 12 лет я ходил в школу "Архимед" в нашем городе на кружки по Scratch и робототехнике (на лего). Навыки, полученные там мне очень пригодились. У меня был очень хороший преподаватель,
+        благодаря которому мне в будущем легко удалось начать изучение полноценного языка программирования. В 13-14 лет я начал изучать C++ по видеороликам, статьям из Интернета и с консультацией старшего брата-программиста. 
+        У меня получилось написать свою первую простенькую программу: калькулятор. Однако, очень многое мне было непонятно. Через несколько лет, я самостоятельно по книге начал изучать Python, а еще спустя 
+        некоторое время, записался на курс от инжинириума им. Н.Э. Баумана по изучению Python, который был бесплатным для нашей области. Благодаря этому курсу я перестал чувствовать страх перед кодом и начал писать прикладные программы. 
+        <br>Так, по окончанию курса я самостоятельно начал создавать телеграм-ботов, парсеры, GUI-приложения, а также веб-сайты (на Flask). Курсы также дали мне базу JavaScript, а также открыли передо мной дальнейший путь. 
+        Я начал изучать профессию backend-разработчика и искать информацию для того, чтобы расти. Изучил фреймворк Django, написал несколько проектов на нём (ниже можно будет ознакомиться). Появился интерес к изучению Arduino, 
+        микроконтроллеров, а также модулей которого у меня было достаточно много. 
+        <br>Сейчас, один из моих проектов: "PyTPretator - сайт для изучения программирования школьникам", продуктом которого является сайт на Django, лицей выдвинул на Всероссийский конкурс. 
+        <br><br>
+        <h4>Мои проекты</h4>
+        Практически все свои проекты я выкладываю на гитхаб, однако зачастую делаю репозитории приватными, поскольку проекты делаю для себя. Предлагаю ознакомиться с моими работами. (Некоторые данные, которые, очевидно, должны быть скрыты в репозитории, например: Secret Key, Allowed_Hosts и т.д, я не выносил в переменные окружения, поскольку проекты
+        либо еще разрабатываются, либо делались исключительно для себя).
+        <div class="row" style="padding-top:12px">
+            {% for project in my_projects %}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ project.name }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    <div class="row">
+                    <a href="{{ project.github }}" target="_blank" class="btn btn-primary" style="margin-bottom:2px">Репозиторий</a>
+                    <a href="{{ project.video }}" target="_blank" class="btn btn-primary">Презентация</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h4 style="padding-top: 60px">Опыт в разработке</h4>
+        <h6>Python</h6>
+        - Парсеры (BeautifulSoup4)<br>
+        - Телеграм-боты (pyTelegramBotAPI)<br>
+        - Веб-сайты (Flask, Django)<br>
+        - GUI-приложения (TKinter, Eel)<br>
+        <h6>Верстка</h6>
+        - Базовые знания HTML<br>
+        - Имею опыт в использовании Bootstrap<br>
+        <h6>JavaScript</h6>
+        - Базовые знания JS, эксперементировал, создавая одностраничные игры (например: Виселица)
+    </p>
+</div>
+{% endblock %}
